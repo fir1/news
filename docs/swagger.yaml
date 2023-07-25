@@ -1,0 +1,21 @@
+basePath: /
+host: localhost:8080/
+info:
+  contact:
+    email: kasimovfirdavs@gmail.com
+    name: API Support
+  description: This is an API documentation for News Feed backend
+  termsOfService: http://swagger.io/terms/
+  title: Swagger News API
+  version: "1.0"
+paths: {}
+schemes:
+- http
+- https
+securityDefinitions:
+  Bearer:
+    description: Type "Bearer" followed by a space and JWT token.
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"
