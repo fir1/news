@@ -80,4 +80,4 @@ docker-compose up
 # What can be improved ?
 - Currently, the BDD (Behavior-Driven Development) integration tests are missing from the project due to time constraints for this project. In real projects, the use of BDD tests with the help of the Cucumber framework would be useful to check the behavior of the business logic, as it allows making client REST API calls and verifying the expected behavior.
 
-- mplement a third-party API provider to leverage any additional functionality related to the news. This would enhance the capabilities of the application by fetching news from multiple sources and providing a richer user experience.
+- Implement a third-party API provider to leverage any additional functionality related to the news. This would enhance the capabilities of the application by fetching news from multiple sources and providing a richer user experience.

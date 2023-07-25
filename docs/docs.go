@@ -105,7 +105,7 @@ const docTemplate = `{
                     },
                     {
                         "type": "string",
-                        "description": "if value ` + "`" + `news_source_url` + "`" + ` filled the system will try to fetch news from the given ` + "`" + `url` + "`" + `\nand please don't fill anything for ` + "`" + `providers` + "`" + ` field because you are allowed\nto choose to get a news feed either via choosing existing providers or by giving news_source_url",
+                        "description": "if value ` + "`" + `news_source_url` + "`" + ` filled the system will try to fetch news from the given ` + "`" + `url` + "`" + `.\nThe url must be a valid RSS url link ending with ` + "`" + `.xml` + "`" + `\nand please don't fill anything for ` + "`" + `providers` + "`" + ` field because you are allowed\nto choose to get a news feed either via choosing existing providers or by giving news_source_url",
                         "name": "news_source_url",
                         "in": "query"
                     },

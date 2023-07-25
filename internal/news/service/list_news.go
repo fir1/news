@@ -26,7 +26,7 @@ type ListNewsResponse struct {
 
 func (s Service) ListNews(ctx context.Context, params ListNewsParams) (ListNewsResponse, error) {
 	if params.Categories == nil {
-		params.Categories = &[]string{"default"}
+		params.Categories = &[]string{"general"}
 	}
 
 	if params.SortByPublishDate != "" && !params.SortByPublishDate.Valid() {
@@ -53,11 +53,14 @@ func (s Service) ListNews(ctx context.Context, params ListNewsParams) (ListNewsR
 			}
 
 			for _, category := range *params.Categories {
+				if category != "general" && category != "technology" {
+					return ListNewsResponse{}, ErrArgument{Err: fmt.Errorf("category: %s is invalid must be `general`, `technology`", category)}
+				}
 				wg.Add(1)
 
 				feedURL, found := feedURLs[provider][category]
 				if !found {
-					feedURL = feedURLs[provider]["default"]
+					feedURL = feedURLs[provider]["general"]
 				}
 
 				go func(wg *sync.WaitGroup, feedURL string, provider model.NewsProvider) {
@@ -124,11 +127,11 @@ func (s Service) ListNews(ctx context.Context, params ListNewsParams) (ListNewsR
 
 var feedURLs = map[model.NewsProvider]map[string]string{
 	model.NewsProviderBBC: {
-		"default":    "http://feeds.bbci.co.uk/news/uk/rss.xml",
+		"general":    "http://feeds.bbci.co.uk/news/uk/rss.xml",
 		"technology": "http://feeds.bbci.co.uk/news/technology/rss.xml",
 	},
 	model.NewsProviderSky: {
-		"default":    "http://feeds.skynews.com/feeds/rss/uk.xml",
+		"general":    "http://feeds.skynews.com/feeds/rss/uk.xml",
 		"technology": "http://feeds.skynews.com/feeds/rss/technology.xml",
 	},
 }
